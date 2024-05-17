@@ -1,0 +1,46 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import pyautogui
+import time
+import os
+
+
+url='https://www.naukri.com/'
+
+curr_dir=os.getcwd()
+os.chdir(r'C:\Users\Acer\Desktop')
+with open("credentials.txt", "r") as f:
+    lines=f.readlines()
+
+cred_dict={}
+for each in lines:
+    res=each.split('=')
+    res[1]=res[1].strip().strip("''")
+    cred_dict[res[0]]=res[1]
+
+username=cred_dict.get('username')
+password=cred_dict.get('password')
+
+dri=webdriver.Chrome()
+dri.get(url)
+dri.find_element(By.ID,"login_Layer").click()
+time.sleep(5)
+dri.find_element(By.XPATH,"//input[@placeholder='Enter your active Email ID / Username']").send_keys(username)
+dri.find_element(By.XPATH,"//input[@placeholder='Enter your password']").send_keys(password)
+dri.find_element(By.CLASS_NAME,"btn-primary").click()
+time.sleep(5)
+dri.find_element(By.CLASS_NAME,"nI-gNb-drawer__icon").click()
+time.sleep(5)
+dri.find_element(By.CLASS_NAME,"nI-gNb-info__sub-link").click()
+time.sleep(5)
+dri.find_element(By.CLASS_NAME,"dummyUpload").click()
+time.sleep(3)
+pyautogui.write(r'C:\Users\Acer\Desktop\GAURAV_SHARMA_CV_CIENA.pdf')
+time.sleep(1)
+pyautogui.press('enter')
+print("job done")
+x=input("do you want to exit? :")
+if x.upper() == 'Y':
+    exit()
+else:
+    time.sleep(300)
