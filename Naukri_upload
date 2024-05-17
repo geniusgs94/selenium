@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import pyautogui
 import time
 import os
+
 #link of the website
 url='https://www.naukri.com/'
 
@@ -12,6 +13,7 @@ curr_dir=os.getcwd()
 os.chdir(r'C:\Users\Acer\Desktop')
 with open("credentials.txt", "r") as f:
     lines=f.readlines()
+
 #using the credentials.txt extracting username and password
 cred_dict={}
 for each in lines:
@@ -36,6 +38,7 @@ dri.find_element(By.CLASS_NAME,"nI-gNb-info__sub-link").click()
 time.sleep(5)
 dri.find_element(By.CLASS_NAME,"dummyUpload").click()
 time.sleep(3)
+#given the path of the file 
 pyautogui.write(r'C:\Users\Acer\Desktop\GAURAV_SHARMA_CV_CIENA.pdf')
 time.sleep(1)
 pyautogui.press('enter')
