@@ -3,15 +3,16 @@ from selenium.webdriver.common.by import By
 import pyautogui
 import time
 import os
-
-
+#link of the website
 url='https://www.naukri.com/'
 
+#Reading credentials.txt to extract username and password
 curr_dir=os.getcwd()
+#Change the directory where the credentials.txt is stored
 os.chdir(r'C:\Users\Acer\Desktop')
 with open("credentials.txt", "r") as f:
     lines=f.readlines()
-
+#using the credentials.txt extracting username and password
 cred_dict={}
 for each in lines:
     res=each.split('=')
